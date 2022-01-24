@@ -9,3 +9,4 @@
 ## http 모듈로 서버 만들기
     1. HTTP 서버 만들기 [lecture04_01]
     2. fs로 HTML 읽어 제공하기 [lecture04_02]
+    3. REST API 서버 만들기 [lecture04_03]

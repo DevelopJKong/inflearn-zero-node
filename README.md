@@ -11,3 +11,4 @@
     2. fs로 HTML 읽어 제공하기 [lecture04_02]
     3. REST API 서버 만들기 [lecture04_03]
     4. POST, PUT, DELETE 요청 보내기
+    5. 쿠키 이해하기

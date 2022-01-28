@@ -13,3 +13,4 @@
     4. POST, PUT, DELETE 요청 보내기
     5. 쿠키 이해하기
     6. 세션 사용하기
+    7. https, http2

@@ -19,3 +19,6 @@
 
 ## 패키지 매니저
     1. package.json
+    2. node_modules와 npx, SemVer
+    3. npm 명령어들 알아보기
+    4. npm 배포하기

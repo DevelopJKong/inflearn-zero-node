@@ -29,3 +29,4 @@
     3. 미들웨어 특성 이해하기
     4. next 활용법
     5. morgan, bodyParser, cookieParser
+    6. static 미들웨어

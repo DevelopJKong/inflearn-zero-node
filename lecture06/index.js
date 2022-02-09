@@ -4,6 +4,8 @@ const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const multer = require("multer");
+const { fstat } = require("fs");
+const { ADDRGETNETWORKPARAMS } = require("dns");
 const app = express();
 const PORT = 3000;
 
@@ -22,10 +24,43 @@ app.use(
     saveUninitialized: false,
     secret: "jeongbinpassword",
     cookie: {
-      httpOnly:true,
-    }
+      httpOnly: true,
+    },
   })
 );
+
+try {
+  fs.readdirSync("uploads");
+} catch (e) {
+  console.error("uploads 폴더가 없어 uploads 폴더를 생성합니다");
+  fs.mkdirSync("uploads");
+}
+const upload = multer({
+  storage: multer.diskStorage({
+    destination(req, file, done) {
+      done(null, "uploads/");
+    },
+    filename(req, file, done) {
+      const ext = path.extname(file.originalname);
+      done(null, path.basename(file.originalname, ext) + Date.now() + ext);
+    },
+  }),
+  limits: { fileSize: 5 * 1024 * 1024 },
+});
+
+app.get("/upload", (req, res) => {
+  res.sendFile(path.join(__dirname, "multipart.html"));
+});
+
+app.post(
+  "/upload",
+  upload.fields([{ name: "image1" }, { name: "image2" }]),
+  (req, res) => {
+    console.log(req.files, req.body);
+    res.send("ok");
+  }
+);
+
 app.use(multer().array());
 app.use(
   (req, res) => {
